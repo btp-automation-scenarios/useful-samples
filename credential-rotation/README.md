@@ -14,6 +14,6 @@ In general, there are two options to rotate credentials for service instance bin
 Sample code for the two options is available in the sub-directories of this folder:
 
 - [`time-rotating`](./time-rotating/README.md)
-- [`blue-green`](./custom_provider/README.md)
+- [`blue-green`](./blue-green/README.md)
 
 In both scenario we assume a setup of a subaccount with a service instance and assigned service bindings. The service bindings should then be propagated to a destination as authentication credentials.
