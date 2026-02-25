@@ -44,5 +44,4 @@ terraform.rc
 # Env for Terraform
 .env
 
-# exclude the folder for the learning course as described in unit 2.1
-learning-terraform-on-sapbtp
+.terraform.lock.hcl
