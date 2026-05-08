@@ -10,3 +10,5 @@ To address this issue we use the btp CLI as entry point to the netitlements on g
 
 - Get a list of all services that your subaccount is entitled to inclduding their technical names and descriptions as well as the plans assigned to these services. The information about the plans is enriched by the information about the availability of the servcies in data centers and the underlying Hyperscaler of the data center
 - Get the information about one specific service identified by the name or display name of the service. The output is the same as for the list of all services but only for the service you are interested in.
+
+The results are stored as JSON file in the current directory. You can use this file for your automation scripts to determine the technical names of services and plans and their availability in data centers.
