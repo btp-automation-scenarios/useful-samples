@@ -37,6 +37,12 @@ check_prerequisites() {
     if [[ $missing -ne 0 ]]; then
         exit 1
     fi
+
+    if btp 2>/dev/null | grep --silent "not logged in"; then
+        echo "Please log in with the btp CLI (use btp login)."
+        exit 1
+    fi
+
 }
 
 fetch_entitlements() {
