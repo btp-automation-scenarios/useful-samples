@@ -3,19 +3,19 @@ set -euo pipefail
 
 JQ_TRANSFORM_SERVICE='
 {
-    name: .name,
-    displayName: .displayName,
-    description: .description,
+    name,
+    displayName,
+    description,
     servicePlans: [.servicePlans[] | {
-        name: .name,
-        displayName: .displayName,
-        description: .description,
-        uniqueIdentifier: .uniqueIdentifier,
+        name,
+        displayName,
+        description,
+        uniqueIdentifier,
         dataCenters: [.dataCenters[]? | {
-            name: .name,
-            displayName: .displayName,
-            region: .region,
-            iaasProvider: .iaasProvider
+            name,
+            displayName,
+            region,
+            iaasProvider
         }]
     }]
 }
@@ -37,6 +37,12 @@ check_prerequisites() {
     if [[ $missing -ne 0 ]]; then
         exit 1
     fi
+
+    if btp 2>/dev/null | grep --silent "not logged in"; then
+        echo "Please log in with the btp CLI (use btp login)."
+        exit 1
+    fi
+
 }
 
 fetch_entitlements() {
