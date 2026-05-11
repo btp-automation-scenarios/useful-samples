@@ -4,19 +4,19 @@ $ErrorActionPreference = "Stop"
 
 $JQ_TRANSFORM_SERVICE = @'
 {
-    name: .name,
-    displayName: .displayName,
-    description: .description,
+    name,
+    displayName,
+    description,
     servicePlans: [.servicePlans[] | {
-        name: .name,
-        displayName: .displayName,
-        description: .description,
-        uniqueIdentifier: .uniqueIdentifier,
+        name,
+        displayName,
+        description,
+        uniqueIdentifier,
         dataCenters: [.dataCenters[]? | {
-            name: .name,
-            displayName: .displayName,
-            region: .region,
-            iaasProvider: .iaasProvider
+            name,
+            displayName,
+            region,
+            iaasProvider
         }]
     }]
 }
@@ -36,6 +36,12 @@ function Test-Prerequisites {
     }
 
     if ($missing) {
+        exit 1
+    }
+
+    $btpOutput = btp 2>&1 | Out-String
+    if ($btpOutput -match "not logged in") {
+        Write-Host "Please log in with the btp CLI (use btp login)."
         exit 1
     }
 }
