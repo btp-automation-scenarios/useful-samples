@@ -3,19 +3,19 @@ set -euo pipefail
 
 JQ_TRANSFORM_SERVICE='
 {
-    name: .name,
-    displayName: .displayName,
-    description: .description,
+    name,
+    displayName,
+    description,
     servicePlans: [.servicePlans[] | {
-        name: .name,
-        displayName: .displayName,
-        description: .description,
-        uniqueIdentifier: .uniqueIdentifier,
+        name,
+        displayName,
+        description,
+        uniqueIdentifier,
         dataCenters: [.dataCenters[]? | {
-            name: .name,
-            displayName: .displayName,
-            region: .region,
-            iaasProvider: .iaasProvider
+            name,
+            displayName,
+            region,
+            iaasProvider
         }]
     }]
 }
